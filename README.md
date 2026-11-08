@@ -2,6 +2,8 @@
 
 Numerical and systems research into matrix-based proof of useful work.
 
+A research project by [Requant Network](https://requant.network).
+
 **Stage 0 вЂ” CPU arithmetic baseline and CUDA diagnostic preparation.**
 
 ## Research question
