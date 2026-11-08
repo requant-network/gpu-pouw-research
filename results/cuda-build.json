@@ -1,0 +1,12 @@
+{
+  "compiler": "NVIDIA CUDA 12.8.61",
+  "target": "sm_120",
+  "flags": [
+    "-std=c++17",
+    "-O3",
+    "-arch=sm_120"
+  ],
+  "exit_code": 0,
+  "compiled": true,
+  "gpu_executed": false
+}

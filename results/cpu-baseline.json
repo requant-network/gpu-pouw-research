@@ -1,0 +1,171 @@
+{
+  "quantizer_checks": 511,
+  "integer_noise_peeling_exact": true,
+  "matrix_size": 32,
+  "noise_rank_bound": 2,
+  "measurements": [
+    {
+      "pattern": "integer",
+      "noise_scale": 0.0,
+      "error_metric": "relative_frobenius",
+      "error": 0.0
+    },
+    {
+      "pattern": "integer",
+      "noise_scale": 0.015625,
+      "error_metric": "relative_frobenius",
+      "error": 0.0014388962429191764
+    },
+    {
+      "pattern": "integer",
+      "noise_scale": 0.0625,
+      "error_metric": "relative_frobenius",
+      "error": 0.011557982790070368
+    },
+    {
+      "pattern": "integer",
+      "noise_scale": 0.25,
+      "error_metric": "relative_frobenius",
+      "error": 0.08406533633834659
+    },
+    {
+      "pattern": "integer",
+      "noise_scale": 1.0,
+      "error_metric": "relative_frobenius",
+      "error": 0.3518924550587552
+    },
+    {
+      "pattern": "gaussian",
+      "noise_scale": 0.0,
+      "error_metric": "relative_frobenius",
+      "error": 0.037333936291406994
+    },
+    {
+      "pattern": "gaussian",
+      "noise_scale": 0.015625,
+      "error_metric": "relative_frobenius",
+      "error": 0.05702989046670824
+    },
+    {
+      "pattern": "gaussian",
+      "noise_scale": 0.0625,
+      "error_metric": "relative_frobenius",
+      "error": 0.18583583534166317
+    },
+    {
+      "pattern": "gaussian",
+      "noise_scale": 0.25,
+      "error_metric": "relative_frobenius",
+      "error": 0.8411607920701214
+    },
+    {
+      "pattern": "gaussian",
+      "noise_scale": 1.0,
+      "error_metric": "relative_frobenius",
+      "error": 6.654903862673427
+    },
+    {
+      "pattern": "outlier",
+      "noise_scale": 0.0,
+      "error_metric": "relative_frobenius",
+      "error": 0.04270784556500699
+    },
+    {
+      "pattern": "outlier",
+      "noise_scale": 0.015625,
+      "error_metric": "relative_frobenius",
+      "error": 0.061096717281679536
+    },
+    {
+      "pattern": "outlier",
+      "noise_scale": 0.0625,
+      "error_metric": "relative_frobenius",
+      "error": 0.10375363866436628
+    },
+    {
+      "pattern": "outlier",
+      "noise_scale": 0.25,
+      "error_metric": "relative_frobenius",
+      "error": 0.4341149178746287
+    },
+    {
+      "pattern": "outlier",
+      "noise_scale": 1.0,
+      "error_metric": "relative_frobenius",
+      "error": 2.1684261012198345
+    },
+    {
+      "pattern": "zero",
+      "noise_scale": 0.0,
+      "error_metric": "absolute_frobenius",
+      "error": 0.0
+    },
+    {
+      "pattern": "zero",
+      "noise_scale": 0.015625,
+      "error_metric": "absolute_frobenius",
+      "error": 0.13049447725382865
+    },
+    {
+      "pattern": "zero",
+      "noise_scale": 0.0625,
+      "error_metric": "absolute_frobenius",
+      "error": 2.0879116360612584
+    },
+    {
+      "pattern": "zero",
+      "noise_scale": 0.25,
+      "error_metric": "absolute_frobenius",
+      "error": 33.406586176980134
+    },
+    {
+      "pattern": "zero",
+      "noise_scale": 1.0,
+      "error_metric": "absolute_frobenius",
+      "error": 534.5053788316822
+    },
+    {
+      "pattern": "rank_one",
+      "noise_scale": 0.0,
+      "error_metric": "relative_frobenius",
+      "error": 0.0
+    },
+    {
+      "pattern": "rank_one",
+      "noise_scale": 0.015625,
+      "error_metric": "relative_frobenius",
+      "error": 0.0
+    },
+    {
+      "pattern": "rank_one",
+      "noise_scale": 0.0625,
+      "error_metric": "relative_frobenius",
+      "error": 0.018010646241289334
+    },
+    {
+      "pattern": "rank_one",
+      "noise_scale": 0.25,
+      "error_metric": "relative_frobenius",
+      "error": 0.0739484180376662
+    },
+    {
+      "pattern": "rank_one",
+      "noise_scale": 1.0,
+      "error_metric": "relative_frobenius",
+      "error": 0.5448623679425842
+    }
+  ],
+  "scope": "Numerical experiment only. This is not the Pearl sampler, verifier, or mining protocol.",
+  "environment": {
+    "python": "3.12.10",
+    "os": "Windows",
+    "architecture": "AMD64",
+    "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD"
+  },
+  "generated_at_utc": "2026-11-08T20:42:35.894011+00:00",
+  "source_sha256": {
+    "run.py": "03dcac3bfac63ff7627b99073314feebdd9fbe628c6e238c46b5bf9646096dc4",
+    "experiments/quantization.py": "6ebd7138c62293f2f95940a9cab92493e6821afa04227b47467c6bed63426a95",
+    "cuda/probe.cu": "79163890330bcab5868eaef1670f551350c71bf295ea9cd91d761e4b0d91401f"
+  }
+}
