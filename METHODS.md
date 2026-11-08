@@ -20,3 +20,11 @@ The initial CUDA diagnostic is a correctness and compilation starting point. Its
 ## Decision gate
 
 A provisional research target is at least 20% improvement in full-operation latency or measured energy while preserving correctness and the selected protocol's parameters. This threshold is a project choice, not an observed result. Isolated kernel gains require an end-to-end follow-up. No profitability or security conclusion follows from these first-stage baselines.
+
+## Executed Stage-1 protocol
+
+`gpu_study.py` executes five warm-up passes and thirty measured passes for every variant and case. Variant order reverses on alternating passes. The second campaign changes the input seed from 20261109 to 20261110. Repetitions reuse a case's arrays: these are latency observations, not thirty independent workload samples. No CUDA clock, voltage, persistence, or power-limit changes were made. The owner released the card before the campaign; no workload was intentionally run concurrently on that card. Background CPU/OS activity and dynamic clocks remain possible confounders.
+
+Report medians and nearest-rank p95 for each seed separately; do not pool independent runs to hide drift. CUDA events cover the stream interval, which can contain gaps while the host enqueues kernels. Host timings cover Python, enqueue and the explicit final synchronization. Captured CUDA Graph comparisons reduce enqueue overhead. Timed allocations normally use CuPy's warmed memory pool. Input generation, independent CPU oracles, JIT compilation, plan/heuristic selection, and correctness comparisons are excluded. Each report lists any additional exclusions. Device-resident and transfer-inclusive paths are separate experiments.
+
+The raw records include exact script/reference source hashes. The environment record deliberately excludes usernames, hostnames, serial numbers, access credentials, and device UUIDs. Consumer-card results from one host do not establish performance on B200/H100, other GPUs, other PCIe links, or an upstream optimized implementation. No measured energy or profitability claim is made.

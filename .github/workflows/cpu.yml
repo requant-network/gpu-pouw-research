@@ -11,3 +11,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: python run.py --output results/ci.json
+      - run: python -m py_compile gpu_study.py summarize_results.py
+      - run: python summarize_results.py
+      - run: git diff --exit-code -- results/gpu-summary.csv

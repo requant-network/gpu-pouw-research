@@ -1,0 +1,53 @@
+{
+  "totalGlobalMem": 16657285120,
+  "major": 12,
+  "minor": 0,
+  "multiProcessorCount": 36,
+  "maxThreadsPerBlock": 1024,
+  "sharedMemPerBlock": 49152,
+  "sharedMemPerMultiprocessor": 102400,
+  "name": "NVIDIA GeForce RTX 5060 Ti",
+  "cpu": "AMD Ryzen 5 5500",
+  "utc": "2026-11-08T21:12:49.364823+00:00",
+  "python": "3.12.3",
+  "os": "Linux",
+  "kernel": "6.8.0-142-generic",
+  "architecture": "x86_64",
+  "runtime": 12090,
+  "driver": 13030,
+  "nvrtc": [
+    12,
+    8
+  ],
+  "packages": {
+    "numpy": "2.2.6",
+    "cupy-cuda12x": "13.6.0",
+    "nvidia-cuda-nvrtc-cu12": "12.8.93",
+    "nvidia-cuda-runtime-cu12": "12.8.90",
+    "nvidia-cublas-cu12": "12.8.4.1"
+  },
+  "nvidia_smi_columns": [
+    "name",
+    "driver_version",
+    "memory.total",
+    "power.limit",
+    "clocks.max.sm",
+    "clocks.max.mem",
+    "pcie.link.gen.max",
+    "pcie.link.width.max",
+    "pcie.link.gen.current",
+    "pcie.link.width.current"
+  ],
+  "nvidia_smi_values": [
+    "NVIDIA GeForce RTX 5060 Ti",
+    "610.43.03",
+    "16311 MiB",
+    "180.00 W",
+    "3120 MHz",
+    "14001 MHz",
+    "3",
+    "16",
+    "3",
+    "8"
+  ]
+}

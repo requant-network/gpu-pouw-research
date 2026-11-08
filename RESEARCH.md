@@ -12,6 +12,10 @@ The first experiment implements finite E4M3FN round-to-nearest-even quantization
 
 python run.py performs 511 quantizer checks including representable values, midpoint ties, saturation, and rejection of non-finite inputs. It checks exact integer noise peeling and sweeps five noise scales across integer, Gaussian, outlier, zero, and rank-one inputs.
 
+## Completed GPU campaign
+
+[GPU_REPORT.md](GPU_REPORT.md) records the executed two-seed campaign, mathematical contract, independent checks, raw timings, ablations, negative findings and next decisions. All study sources and records are public. This extends the CPU baseline without claiming a complete cryptographic protocol.
+
 ## Next experiments
 
 1. Pin an upstream protocol revision and reproduce its sampler and verifier locally.
@@ -25,6 +29,6 @@ Report a full-operation comparison against a pinned baseline, independent correc
 ## Sources
 
 - [Matrix-multiplication PoUW paper](https://eprint.iacr.org/2025/685)
-- [Pearl FP8 specification](https://pearlresearch.ai/Pearl_Whitepaper.pdf)
+- [Pearl FP8 draft specification](https://pearl-research-labs.github.io/pips/pip-0003/)
 - [Pearl open research problems](https://pearlpolymath.com/)
 - [NVIDIA NVFP4 description](https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference/)

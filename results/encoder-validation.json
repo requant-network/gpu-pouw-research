@@ -1,0 +1,12 @@
+{
+  "utc": "2026-11-08T21:17:54.302538+00:00",
+  "seed": 424242,
+  "exact_encoder_checks": 262144,
+  "positive_and_negative_noise": true,
+  "signed_zero_and_saturation": true,
+  "source_sha256": {
+    "validate_encoder.py": "4bf145f8494dd9dcd2f9b9116af3f34d3b4f8167c874cca598592e6b421b7d93",
+    "gpu_study.py": "8154fadccbb9a029a187f7d57b1a8a660e8a4b5cacd3936cfee2ed1e797e4fe9",
+    "experiments/quantization.py": "6ebd7138c62293f2f95940a9cab92493e6821afa04227b47467c6bed63426a95"
+  }
+}
