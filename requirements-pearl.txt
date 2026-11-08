@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cu130
+torch==2.13.0+cu130
+nvidia-cutlass-dsl[cu13]==4.6.2
+quack-kernels==0.6.4
+apache-tvm-ffi==0.1.11
+cuda-python==13.0.3
+blake3==1.0.8
+numpy==2.2.6
+einops==0.8.2
+protobuf==6.33.6
+torch-c-dlpack-ext==0.1.5

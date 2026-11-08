@@ -4,7 +4,11 @@ Numerical and systems research into matrix-based proof of useful work.
 
 A research project by [Requant Network](https://requant.network).
 
-**Stage 1: GPU experiments executed, independently checked, and replicated on RTX 5060 Ti.**
+**Research campaign completed: CPU references, two-seed GPU experiments and final conclusions published.**
+
+Completed Stage 2: actual pinned Pearl kernel/Rust norm conformance, independent integer GPU norms, and full offline GPU candidate → native plain-proof verification. All 280 local executions pass and 16 altered controls fail. A pinned pA API incompatibility requires an explicit host key-finalization bridge. The confirmed norm mismatch did not cause proof rejection at the easy test target.
+
+Read the [final research report](FINAL_REPORT.md) and [complete Stage-2 median/p95 table](results/stage2-summary.csv). The Stage-1 report below is retained as the preliminary campaign.
 
 Read the [GPU research report and conclusions](GPU_REPORT.md) for measured findings, negative results and the next research decisions.
 
@@ -12,7 +16,7 @@ Read the [GPU research report and conclusions](GPU_REPORT.md) for measured findi
 
 How do noise, low-rank structure, and FP8 quantization interact with useful matrix-product accuracy and implementation overhead?
 
-## Current experiment scope
+## Stage-1 experiment scope
 
 The first experiment implements finite E4M3FN round-to-nearest-even quantization with saturation, verifies an exact integer low-rank-noise peeling identity, and measures product error for a fixed 32-by-32 workload. The numerical noise is deliberately simple and correlated. It is not the Pearl sampler, jackpot policy, verifier, or a protocol-valid mining implementation. Accuracy measurements do not establish unpredictability, hardness, security, or expected rewards. FP8 products are accumulated in Python floating point, not a device-specific FP32 Tensor Core order.
 
@@ -90,3 +94,8 @@ Original experiment code is MIT licensed. References retain their own licenses. 
 - [Pearl FP8 draft specification](https://pearl-research-labs.github.io/pips/pip-0003/)
 - [Pearl open research problems](https://pearlpolymath.com/)
 - [NVIDIA NVFP4 description](https://developer.nvidia.com/blog/introducing-nvfp4-for-efficient-and-accurate-low-precision-inference/)
+
+## Related Requant Network research
+
+- [gpu-zk-research](https://github.com/requant-network/gpu-zk-research)
+- [gpu-fhe-research](https://github.com/requant-network/gpu-fhe-research)

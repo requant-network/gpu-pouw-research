@@ -1,0 +1,54 @@
+{
+  "revision": "b7160514ed3d862fb48e850ba9a70a545cefcb1e",
+  "seed": 20261111,
+  "norms_checked": 384,
+  "cases": [
+    {
+      "kind": "known_boundary",
+      "k": 1024,
+      "rows": 64,
+      "all_norms_equal": true,
+      "input_sha256": "c1d5d3b2efd24e9229a41129f13ba56b52f35b83064e39ad76c2933de3448d1d"
+    },
+    {
+      "kind": "boundary_permutations",
+      "k": 1024,
+      "rows": 64,
+      "all_norms_equal": true,
+      "input_sha256": "1542d5388aa618d222db0354a43d8af8c6d499314e96d9728eddc184b7672674"
+    },
+    {
+      "kind": "random",
+      "k": 1024,
+      "rows": 64,
+      "all_norms_equal": true,
+      "input_sha256": "e31f264b3ef5e01de1d6bed6c3ae45179162afc698fbf4f4f73c1217a2007a81"
+    },
+    {
+      "kind": "random",
+      "k": 4096,
+      "rows": 64,
+      "all_norms_equal": true,
+      "input_sha256": "61950af8a80e8431b25ff42ab661af8f8045c7a71e470c96f0e2d69cc810716b"
+    },
+    {
+      "kind": "random",
+      "k": 16384,
+      "rows": 64,
+      "all_norms_equal": true,
+      "input_sha256": "8eac0ece804e20153931e49c23667f7935188b8bcfd001761f1449944d5855b6"
+    },
+    {
+      "kind": "random",
+      "k": 65536,
+      "rows": 64,
+      "all_norms_equal": true,
+      "input_sha256": "f9933b65a965bd06643857f4c8b475cc9757460115850f2849d4e2f33b4a57cb"
+    }
+  ],
+  "source_sha256": {
+    "confirm_rust_norms.py": "5b1933b69e28bd4a45872519a21b780105bedf658b962a847d58a1bbf2293aa9"
+  },
+  "build_provenance": "rust-norm-build.json",
+  "study_sha256": "e09b662c83203a6cbb6d212c641ab3e063931f6eff83ce4b6722a076920f599a"
+}

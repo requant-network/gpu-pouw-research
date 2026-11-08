@@ -1,5 +1,9 @@
 # Research results
 
+**Completed campaign:** Completed Stage 2: actual pinned Pearl kernel/Rust norm conformance, independent integer GPU norms, and full offline GPU candidate → native plain-proof verification. All 280 local executions pass and 16 altered controls fail. A pinned pA API incompatibility requires an explicit host key-finalization bridge. The confirmed norm mismatch did not cause proof rejection at the easy test target.
+
+The [final report](FINAL_REPORT.md) supersedes the preliminary scope and next-step list below. It contains the completed experiments, reproducible commands, negative outcomes and remaining work beyond this campaign. Historical Stage-1 details follow.
+
 Research date: 2026-11-09, Asia/Yekaterinburg. Machine-readable records use UTC.
 
 ## CPU correctness

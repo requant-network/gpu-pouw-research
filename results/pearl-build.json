@@ -1,0 +1,42 @@
+{
+  "utc": "2026-11-08T22:47:57.422252+00:00",
+  "revision": "b7160514ed3d862fb48e850ba9a70a545cefcb1e",
+  "upstream_clean": true,
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "maturin": "maturin 1.16.0",
+  "native_build_flags": [
+    "maturin",
+    "build",
+    "--release",
+    "--locked",
+    "--jobs",
+    "3"
+  ],
+  "rustc_bootstrap": "1",
+  "cargo_lock_sha256": {
+    "zk-pow/Cargo.lock": "7d403b712a32218aec37327118a5cb851aa8d3a73da28d89c846d92a03d6ff41",
+    "pearl-blake3/Cargo.lock": "686da1fa66fb1b0db434eb1b497ed3daeb8e799e5f09bafe774c34e154f9e720",
+    "py-pearl-mining/Cargo.lock": "0280646f62a589121f1ad6415d2393d9d2bacf0d7c597a91fb703c5caa0e40f7"
+  },
+  "wheel_sha256": {
+    "pearl_blake3-0.1.0-cp312-cp312-manylinux_2_34_x86_64.whl": "7d23ed970fc17c65edffa6a5962a653f1cd656901e5bf48d88d1beb62bd6cd6b",
+    "py_pearl_mining-0.3.1-cp312-abi3-manylinux_2_34_x86_64.whl": "787e092fce7b8f943cf4c455a9088d30bfe716349ecb103d5a604535a433a882"
+  },
+  "source_sha256": {
+    "collect_pearl_build.py": "7418b5b7831efcb632bfbf951c75d5f65745e6b37e1fbf9f9746b97dd39d5865"
+  },
+  "result_sha256": {
+    "nonce-study.json": "849b4e5ba4edbf70024a4318375d19b2cc0be0a831980f722f5d7f815acb4ecc",
+    "nonce-replication.json": "6a6df1f27255c2f9535716be857bd65747d9c1c002d85c7b71b167938a9cc227"
+  },
+  "native_packages": {
+    "py-pearl-mining": "0.3.1",
+    "pearl-blake3": "0.1.0"
+  },
+  "installed_native_sha256": {
+    "pearl_blake3/pearl_blake3.cpython-312-x86_64-linux-gnu.so": "91319ff966eda3c0cf10a2cf80057124be70280b42e53a27f1544fa2ef4089e3",
+    "pearl_mining/pearl_mining.abi3.so": "3a5c0c908a87ee0a9ba3bb3339d92bb517a17c932ee428b55c4dfb88c61c92cc"
+  },
+  "installed_native_matches_wheels": true,
+  "scope": "Both native wheels built from the clean pinned upstream source, release/locked, with Rust 1.98.1 and RUSTC_BOOTSTRAP=1. Full native plain-proof verifier executed; no ZK certificate generated or verified."
+}

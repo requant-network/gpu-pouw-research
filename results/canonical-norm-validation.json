@@ -1,0 +1,13 @@
+{
+  "utc": "2026-11-08T21:43:35.279557+00:00",
+  "seed": 24681357,
+  "constant_valid_rows": 161189,
+  "constant_overflow_or_grid_rejections": 2011,
+  "random_rational_oracle_rows": 256,
+  "source_sha256": {
+    "validate_canonical_norms.py": "610196b2cb9025fd7be6c2fa86f16fe8c3a97e3c36874103c5aabfdc52bcf97d",
+    "cuda/canonical_norms.cu": "a02564339b88a2da8495bf43077e8f5bba688a9b12ddb9aed3cbb04cfa944c98",
+    "experiments/protocol_norms.py": "5c4541c945401cada78104b116d9205cd6d57d3d1710932317b47d1e566dc02c"
+  },
+  "scope": "Every nonnegative finite BF16 scale code in constant rows for q in {0,1,3,127,-128}, plus heterogeneous full-exponent rows. Constant-row exact norm is abs(q*scale). Unsupported finite-output/grid overflow rows must be rejected. No proof validation."
+}

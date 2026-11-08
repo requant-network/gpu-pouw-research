@@ -1,0 +1,14 @@
+{
+  "revision": "b7160514ed3d862fb48e850ba9a70a545cefcb1e",
+  "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)",
+  "source_sha256": {
+    "build_rust_norms.py": "2d236f826e0963c8fe0b2b1078635816c0bf19895ed952d632e25af8b2e72355"
+  },
+  "upstream_source_sha256": {
+    "prequant": "c96b1e25fead1e47c4f565ae6628e61a6b8337ba3f50b7f01f60ee159f482688",
+    "dtype": "17a1e3fc04b515ee83e62b807a429029fae2d8c3511b9d2eff3c8e7b16a80fa2",
+    "sqrt": "5a10ceaedc075bd2cc2f8ad7233b517d858ac883ffbb2fabd3e50ba6c81b7eaa"
+  },
+  "generated_source_sha256": "4c05543c9341f6fbb521927207a40944e4e6736c11b21344f9afba515f5e96c1",
+  "scope": "Unchanged upstream exact_norms, dtype conversion and sqrt/bracket functions; isolated from the rest of the verifier. This does not execute a full plain-proof or ZK-certificate verification."
+}

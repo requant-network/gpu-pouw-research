@@ -1,0 +1,8 @@
+{
+  "source": "https://github.com/pearl-research-labs/pearl/issues/424",
+  "reported_revision": "684f7045f3b3b7c5b7598f46c06b7dceb506f74b",
+  "raw_sha256": "afcfbf7b2da7edd264cd245cc89f66ea57b649352f8751b65ae8fdd65957afd4",
+  "length": 3328,
+  "layout": "1024 signed int8 codes, 128 little-endian uint16 BF16 scales, 1024 little-endian uint16 BF16 original inputs",
+  "attribution": "Numerical counterexample data published by GitHub user yindavidyang. Extracted as factual test data; no issue reproduction program is vendored."
+}

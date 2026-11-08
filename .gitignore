@@ -4,3 +4,6 @@ build/
 results/*.bin
 .env
 .venv/
+results/norm-inputs-*/
+.pearl-venv/
+upstream-pearl/
