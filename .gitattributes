@@ -7,3 +7,7 @@
 *.csv text eol=lf
 *.yml text eol=lf
 *.bin binary
+
+# Preserve the exact executed Stage-1 bytes bound by retained SHA256 records.
+/run.py -text !eol whitespace=cr-at-eol
+/cuda/probe.cu -text !eol whitespace=cr-at-eol

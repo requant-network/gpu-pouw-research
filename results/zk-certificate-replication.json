@@ -1,0 +1,38 @@
+{
+  "exit_code": 0,
+  "timed_out": false,
+  "wall_seconds": 40.72934306098614,
+  "memory_limit_gib": 48,
+  "timeout_seconds": 900,
+  "completed_phases": [
+    "prover_setup",
+    "prove",
+    "verifier_setup",
+    "verify"
+  ],
+  "result": {
+    "accepted": true,
+    "negative_controls_rejected": 3,
+    "phases_seconds": {
+      "prover_setup": 6.146609147021081,
+      "prove": 27.967619573988486,
+      "verifier_setup": 6.1898286959622055,
+      "verify": 0.009315264993347228
+    },
+    "proof_bytes": 59554,
+    "statement_bytes": 240,
+    "process_peak_rss_kib": 6492584
+  },
+  "source_sha256": {
+    "zk_certificate_study.py": "d0e675b7b2daac43048cfa44df98bd0cfefb12f6b1134d51246739e938ad902a"
+  },
+  "input_artifacts_sha256": {
+    "artifacts/conformance-conformance-20261212-207fffff-gaussian-1024-1/header.json": "e4e7096cb2a97ba2ecb7b98195f036c3aa57346802f8e1188c31c5d1a1285d21",
+    "artifacts/conformance-conformance-20261212-207fffff-gaussian-1024-1/proof.plain": "6f6b238617cdf35f8c5281f53f9ec0f37ca1eb29ea56e0cbbf0b5abc67694acf"
+  },
+  "output_artifacts_sha256": {
+    "artifacts/zk-certificate-replication/statement.bin": "723b8fa88214439d7a7436d7fd36534e23d2c8129b8366ca297496e532e4ab37",
+    "artifacts/zk-certificate-replication/proof.zk": "e3070975d5281eec82e64c1628cbf52f1be5dda06e4e263a94e80e1c7e44e2e1"
+  },
+  "scope": "Unmodified pinned native CPU certificate API, synthetic public proof. One feasibility observation with explicit address-space/time budget; failure within that budget is not a universal impossibility claim. Full raw process output stays private under build/."
+}

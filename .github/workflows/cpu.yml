@@ -10,9 +10,11 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: python -m pip install -r requirements-reference.txt
       - run: python run.py --output results/ci.json
       - run: python -m compileall -q .
       - run: python summarize_results.py
       - run: python experiments/protocol_norms.py
       - run: python verify_stage2.py
-      - run: git diff --exit-code -- results/gpu-summary.csv results/stage2-summary.csv
+      - run: python verify_conformance.py
+      - run: git diff --exit-code -- results/gpu-summary.csv results/stage2-summary.csv results/conformance-summary.csv

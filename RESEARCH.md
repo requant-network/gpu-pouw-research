@@ -21,3 +21,7 @@ The matching replication records and complete median/p95 data are indexed in [st
 ## Work beyond this campaign
 
 This completed study advances the initial GEMM experiment to arithmetic conformance and full local plain-proof acceptance. The useful next work is a direct canonical-norm interface, resolution of the pinned pA layout mismatch, and differential ticket tests at harder targets, followed by ZK-certificate measurements. Those require new integration studies. The present deliverable is reproducible research evidence, with both positive results and observed limitations retained.
+
+## Follow-up closure, 12 November 2026
+
+The [follow-up report](FOLLOWUP_REPORT.md) records the disposition of the concrete next steps: new experiments, negative findings and measured resource limits. The earlier completed campaign remains available for historical comparison. Run `python verify_conformance.py` for the added source, artifact and protocol evidence checks.

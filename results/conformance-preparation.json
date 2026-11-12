@@ -1,0 +1,16 @@
+{
+  "revision": "b7160514ed3d862fb48e850ba9a70a545cefcb1e",
+  "source_sha256": {
+    "prepare_conformance.py": "b14d3ac2664ead8e5f53daab20af864bdd16c63e07506cc2378b4831cb3968b9",
+    "patches/conformance.patch": "a21820e1052c1efcd7ed0218ee165b70860eac122491c716d6067e570d03b471"
+  },
+  "patched_source_sha256": {
+    "miner/pearl-gemm/src/pearl_gemm/mixed_gemm/_kernel_sm120.py": "ec50d3cc9260663935ff0924ad97cec0a5591abb2a69edce0928463a2ec33c74",
+    "miner/pearl-gemm/src/pearl_gemm/noisy_quant/_host.py": "4538ea2b436ac3db3c588d82cd8cdf2bc0d9de9858f972513932c6633c9875f8",
+    "miner/pearl-gemm/src/pearl_gemm/noisy_quant/_kernel_common.py": "e1f2522563006c2fd4c821166f5dc3ae8dfcde468c521403f54230cb58ffb174",
+    "miner/pearl-gemm/src/pearl_gemm/noisy_quant/_quantization_ops.py": "cf05b99e1ff821f896036746716235aaf6b272f92cbd260f09b21bfc6437bf05",
+    "miner/pearl-gemm/src/pearl_gemm/noisy_quant_b/_host.py": "2246f568ed2599a40e1b59a29b33a0e5c7a7739d2222cdd137bc31fe57b3462c",
+    "miner/pearl-gemm/src/pearl_gemm/tensor_hash_plus_stats/_finalize_kernel.py": "170148a885b460166caf367c7ac8acca4548b42809911f4439a45a7e78b31509",
+    "miner/pearl-gemm/src/pearl_gemm/tensor_hash_plus_stats/_host.py": "7aa2824fab36a27e31351d10ca3dede449bdf5a11e2848fa7299c3d1047b5676"
+  }
+}

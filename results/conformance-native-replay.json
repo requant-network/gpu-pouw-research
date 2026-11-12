@@ -1,0 +1,310 @@
+{
+  "plain_verdicts": [
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000010-gaussian-1024-0",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000010-gaussian-1024-1",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000010-gaussian-2048-0",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000010-gaussian-2048-1",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000010-norm_boundary-1024-0",
+      "share_nbits": "0x1f000010",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000010-norm_boundary-1024-1",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000100-gaussian-1024-0",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000100-gaussian-1024-1",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000100-gaussian-2048-0",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000100-gaussian-2048-1",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000100-norm_boundary-1024-0",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-1f000100-norm_boundary-1024-1",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-207fffff-gaussian-1024-0",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-207fffff-gaussian-1024-1",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-207fffff-gaussian-2048-0",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-207fffff-gaussian-2048-1",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-207fffff-norm_boundary-1024-0",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261112-207fffff-norm_boundary-1024-1",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000010-gaussian-1024-0",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000010-gaussian-1024-1",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000010-gaussian-2048-0",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000010-gaussian-2048-1",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000010-norm_boundary-1024-0",
+      "share_nbits": "0x1f000010",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000010-norm_boundary-1024-1",
+      "share_nbits": "0x1f000010",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000100-gaussian-1024-0",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000100-gaussian-1024-1",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000100-gaussian-2048-0",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000100-gaussian-2048-1",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000100-norm_boundary-1024-0",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-1f000100-norm_boundary-1024-1",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-207fffff-gaussian-1024-0",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-207fffff-gaussian-1024-1",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-207fffff-gaussian-2048-0",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-207fffff-gaussian-2048-1",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-207fffff-norm_boundary-1024-0",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-conformance-20261212-207fffff-norm_boundary-1024-1",
+      "share_nbits": "0x207fffff",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261112-1f000100-gaussian-1024-0",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261112-1f000100-gaussian-1024-1",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261112-1f000100-gaussian-2048-0",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261112-1f000100-gaussian-2048-1",
+      "share_nbits": "0x1f000100",
+      "accepted": true,
+      "message": "Mining solution verified successfully"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261112-1f000100-norm_boundary-1024-0",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261112-1f000100-norm_boundary-1024-1",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261212-1f000100-gaussian-1024-0",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261212-1f000100-gaussian-1024-1",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261212-1f000100-gaussian-2048-0",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261212-1f000100-gaussian-2048-1",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261212-1f000100-norm_boundary-1024-0",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    },
+    {
+      "artifact": "artifacts/conformance-norms-pa-only-20261212-1f000100-norm_boundary-1024-1",
+      "share_nbits": "0x1f000100",
+      "accepted": false,
+      "message": "Jackpot condition not satisfied: hash does not meet difficulty target"
+    }
+  ],
+  "zk_certificates": [
+    {
+      "artifact": "artifacts/zk-certificate-replication",
+      "accepted": true,
+      "altered_rejected": true,
+      "seconds": 6.003445624024607
+    },
+    {
+      "artifact": "artifacts/zk-certificate",
+      "accepted": true,
+      "altered_rejected": true,
+      "seconds": 6.077553577022627
+    }
+  ],
+  "source_sha256": {
+    "verify_conformance_artifacts.py": "122957263cb789e2b543460061bc7aff4a164c9eee4a43810c54b6bbb55902ff"
+  },
+  "scope": "Fresh CPU replay of published plain artifacts at their declared share targets, including rejected historical controls; original pinned native verifier. Optional ZK setup/replay checks both new certificates and altered proofs. No GPU execution."
+}

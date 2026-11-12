@@ -1,0 +1,250 @@
+--- a/miner/pearl-gemm/src/pearl_gemm/tensor_hash_plus_stats/_finalize_kernel.py
++++ b/miner/pearl-gemm/src/pearl_gemm/tensor_hash_plus_stats/_finalize_kernel.py
+@@ -5,11 +5,11 @@
+ (``miner_base.commitment_hash``):
+ 
+     HA            = blake3(root_codes || root_scales, key=keyA)          (64 B, keyed)
+-    noise seedA   = blake3(HA || seedB || keyA || pA, key=Subkey("seed-A"))  (107 B: 2 blocks)
++    noise seedA   = blake3(HA || seedB || keyA || pA, key=Subkey("seed-A"))  (105 B: 2 blocks)
+     noise-line kA = blake3("pearl/v4/FP8/noise-line", key=seedA)       (23 B, keyed)
+     jackpot key   = blake3("pearl/v4/FP8/jackpot",    key=seedA)       (20 B, keyed)
+ 
+-``pA = u32(m) || u8(hash_id) || pattern(6)`` is 11 bytes and a per-shape
++``pA = u32(m) || u8(hash_id) || u32(tile_size)`` is 9 bytes and a per-shape
+ compile-time constant; ``seedB`` and ``keyA`` are device words (per B and per
+ header). The output is the 96-byte ``a_keys = seedA || noise-line keyA ||
+ jackpot key`` (``miner_base.commitment_hash.AKeys``): word ``[8, 16)`` keys
+@@ -20,7 +20,7 @@
+ the two 32-byte routing roots right after ``HA`` and appends ``hash_idR ||
+ hash_idO`` to ``pA``:
+ 
+-    noise seedA = blake3(HA || HR || HO || seedB || keyA || pA, key=Subkey("seed-A"))  (173 B: 3 blocks)
++    noise seedA = blake3(HA || HR || HO || seedB || keyA || pA, key=Subkey("seed-A"))  (171 B: 3 blocks)
+ """
+ 
+ import struct
+@@ -39,7 +39,7 @@
+ LABEL_NOISE_LINE = b"pearl/v4/FP8/noise-line"
+ LABEL_JACKPOT = b"pearl/v4/FP8/jackpot"
+ 
+-P_A_BYTES = 11  # u32(m) | u8(hash_id) | pattern(6): the dense pA
++P_A_BYTES = 9  # u32(m) | u8(hash_id) | u32(tile_size): pinned v4 dense pA
+ P_A_MOE_BYTES = P_A_BYTES + 2  # ... | u8(hash_idR) | u8(hash_idO): the MoE pA
+ _P_A_WORDS = (P_A_MOE_BYTES + 3) // 4  # both encodings fit four words
+ ROUTING_COMMITMENTS_BYTES = 64  # HR || HO
+@@ -65,8 +65,8 @@
+ def p_a_words(p_a: bytes) -> tuple[int, ...]:
+     """``pA`` as the constexpr words the finalize splices into seedA's last block.
+ 
+-    Accepts the 11-byte dense encoding or the 13-byte MoE encoding; the word
+-    tuple is padded to four words either way, and ``len(p_a)`` (which also
++    Accepts the 9-byte dense encoding or the 11-byte MoE encoding; the word
++    tuple is padded to three words either way, and ``len(p_a)`` (which also
+     selects the routing-commitment message layout) is passed separately.
+     """
+     if not isinstance(p_a, bytes) or len(p_a) not in (P_A_BYTES, P_A_MOE_BYTES):
+@@ -98,9 +98,9 @@
+         hash_a = compress(key_a, roots, 64, SINGLE_BLOCK_KEYED_FLAGS)
+ 
+         # seedA: one chunk under the "seed-A" subkey. Dense: block 0 (HA ||
+-        # seedB) opens the chunk and block 1 (keyA || pA, 43 bytes) closes it
++        # seedB) opens the chunk and block 1 (keyA || pA, 41 bytes) closes it
+         # as the root. MoE: block 0 (HA || HR) opens, block 1 (HO || seedB) is
+-        # the middle block, block 2 (keyA || pA, 45 bytes) closes.
++        # the middle block, block 2 (keyA || pA, 43 bytes) closes.
+         seed_b = [gSeedB[i] for i in range(8)]
+         if cutlass.const_expr(gRouting is not None):
+             block0 = list(hash_a) + [gRouting[i] for i in range(8)]
+--- a/miner/pearl-gemm/src/pearl_gemm/tensor_hash_plus_stats/_host.py
++++ b/miner/pearl-gemm/src/pearl_gemm/tensor_hash_plus_stats/_host.py
+@@ -434,12 +434,12 @@
+         seedA       = H_"seed-A"(HA || seedB || keyA || pA)
+         a_keys      = seedA || Subkey("noise-line", seedA) || Subkey("jackpot", seedA)
+ 
+-    ``seed_b`` is B's 32-byte noise seed and ``p_a`` the 11-byte dense ``pA``
++    ``seed_b`` is B's 32-byte noise seed and ``p_a`` the 9-byte dense ``pA``
+     encoding (``MiningConfiguration.p_a(m)``; a compile-time constant, so a
+     different lottery layout or leaf recompiles the finalize). ``a_keys`` is
+     the 96-byte output (``miner_base.commitment_hash.AKeys``).
+ 
+-    MoE launches pass the 13-byte MoE ``pA`` together with
++    MoE launches pass the 11-byte MoE ``pA`` together with
+     ``routing_commitments``, the 64-byte ``HR || HO`` device digests of the
+     routing table; the finalize then derives ``seedA = H_"seed-A"(HA || HR ||
+     HO || seedB || keyA || pA)``. Supplying only one of the two is an error.
+--- a/miner/pearl-gemm/src/pearl_gemm/noisy_quant/_quantization_ops.py
++++ b/miner/pearl-gemm/src/pearl_gemm/noisy_quant/_quantization_ops.py
+@@ -187,9 +187,13 @@
+         _l2_grid_round_f32(cutlass.Float32(cute.math.sqrt(mean))),
+         cutlass.Float32(_NORM_FLOOR),
+     )
+-    # The committed FP10 norm rounds the maximum product to BF16 before the
+-    # scale-chain FMA. Round here as well when stats came from another producer.
+-    linf = cute.arch.fmax(_rndb(cutlass.Float32(amax)), cutlass.Float32(_NORM_FLOOR))
++    return _scale_chain_norms(l2, amax, delta_r, delta_over_std)
++
++
++def _scale_chain_norms(l2, linf, delta_r, delta_over_std):
++    """Consume exact canonical BF16 norm codes without squaring in FP32."""
++    l2 = cute.arch.fmax(cutlass.Float32(l2), cutlass.Float32(_NORM_FLOOR))
++    linf = cute.arch.fmax(_rndb(cutlass.Float32(linf)), cutlass.Float32(_NORM_FLOOR))
+     nb = _rndb(cutlass.Float32(delta_r) * l2 + linf)
+     alpha = _rndb(cutlass.Float32(MAX_E4M3) / nb)
+     beta = _rndb(_rndb(alpha * l2) * cutlass.Float32(delta_over_std))
+--- a/miner/pearl-gemm/src/pearl_gemm/noisy_quant/_kernel_common.py
++++ b/miner/pearl-gemm/src/pearl_gemm/noisy_quant/_kernel_common.py
+@@ -25,6 +25,7 @@
+     _open_int8x2_bf16x2_hi,
+     _rndb,
+     _scale_chain,
++    _scale_chain_norms,
+     _splat_bf16x2,
+ )
+ 
+@@ -332,6 +333,11 @@
+         wide loads first, then reduced in the pinned chunk order -- load
+         order does not touch FP order, so alpha/beta stay bit-exact.
+         """
++        if cutlass.const_expr(stats.element_type == cutlass.BFloat16):
++            return _scale_chain_norms(
++                stats[(row, 0)].to(Float32), stats[(row, 1)].to(Float32),
++                self.consts[0], self.consts[1],
++            )
+         chunks = self.stats_chunks
+         # A row's stats span 8 * chunks bytes, so 16B alignment (LDG.128)
+         # holds whenever the chunk count is even.
+--- a/miner/pearl-gemm/src/pearl_gemm/noisy_quant/_host.py
++++ b/miner/pearl-gemm/src/pearl_gemm/noisy_quant/_host.py
+@@ -326,6 +326,7 @@
+     names: tuple[str, ...],
+     msg_base: tuple[int, ...],
+     config: NoisyQuantConfig | None,
++    canonical_norms: torch.Tensor | None = None,
+ ) -> None:
+     """Validated launch shared by the A- and B-side prep entry points.
+ 
+@@ -361,6 +362,14 @@
+     for name, (tensor, dtype, shape, alignment) in zip(names, specs, strict=True):
+         require_tensor(name, tensor, dtype=dtype, shape=shape, device=device, alignment=alignment)
+ 
++    if canonical_norms is not None:
++        require_tensor("canonical_norms", canonical_norms, dtype=torch.bfloat16,
++                       shape=(m, 2), device=device, alignment=16)
++        if not bool((torch.isfinite(canonical_norms) & (canonical_norms >= 0)).all()):
++            raise ValueError("canonical_norms must be finite and nonnegative")
++        if bool((canonical_norms.view(torch.int16)[:, 0].to(torch.int32) & 3).any()):
++            raise ValueError("canonical L2 norm must lie on the four-code BF16 grid")
++
+     tensors = (
+         codes,
+         scales,
+@@ -375,10 +384,10 @@
+     args = tuple(from_dlpack(t, assumed_align=16) for t in tensors)
+     args += (
+         from_dlpack(key.view(torch.uint32)),
+-        from_dlpack(commit_stats, assumed_align=16),
++        from_dlpack(commit_stats if canonical_norms is None else canonical_norms, assumed_align=16),
+     )
+     stream = get_stream(device.index or 0)
+-    cache_key = (device_capability, m, k, config, msg_base)
++    cache_key = (device_capability, m, k, config, msg_base, canonical_norms is not None)
+ 
+     def compile_variant():
+         return cute.compile(
+@@ -413,8 +422,14 @@
+     a_peel: torch.Tensor,
+     *,
+     config: NoisyQuantConfig | None = None,
++    canonical_norms: torch.Tensor | None = None,
+ ) -> None:
+     """Launch noising into caller-owned outputs.
++
++    Optional canonical_norms is a contiguous (m, 2) BF16 tensor of exact
++    (L2-grid, infinity) norms. It bypasses only FP32 stats-to-norm conversion;
++    the original BF16 scale/noise/quantization and validation remain active.
++
+ 
+     ``codes`` and ``scales`` are the two committed block-scaled activation
+     blobs -- the very bytes ``pre_quant`` wrote and ``tensor_hash_plus_stats``
+@@ -443,4 +458,5 @@
+         names=_A_SIDE_NAMES,
+         msg_base=_noise_base_words(_L_E1),
+         config=config,
+-    )
++        canonical_norms=canonical_norms,
++    )
+--- a/miner/pearl-gemm/src/pearl_gemm/noisy_quant_b/_host.py
++++ b/miner/pearl-gemm/src/pearl_gemm/noisy_quant_b/_host.py
+@@ -62,8 +62,12 @@
+     gram: torch.Tensor,
+     *,
+     config: NoisyQuantBConfig | None = None,
++    canonical_norms: torch.Tensor | None = None,
+ ) -> None:
+     """Launch B-side noising into caller-owned outputs.
++
++    canonical_norms accepts the same exact BF16 norm pairs as noisy_quant.
++
+ 
+     ``gram`` is the one caller-owned workspace: the peel epilogue's ``(R, R)``
+     f32 ``F2 @ F1^T`` factor (see ``_kernel.py``).
+@@ -114,6 +118,7 @@
+         names=_B_SIDE_NAMES,
+         msg_base=_noise_base_words(_L_E2),
+         config=config,
++        canonical_norms=canonical_norms,
+     )
+ 
+     # The fused kernel emits the peel in its A-side layout; the epilogue
+--- a/miner/pearl-gemm/src/pearl_gemm/mixed_gemm/_kernel_sm120.py
++++ b/miner/pearl-gemm/src/pearl_gemm/mixed_gemm/_kernel_sm120.py
+@@ -36,12 +36,13 @@
+ 
+ from ._kernel_register_acc import (
+     _MAX_MSGS_WG,
++    _NamedBarrier,
+     LTILE_ROWS,
+     WG_THREADS,
+     _Grouping,
+     _RegisterAccFusedGemm,
+ )
+-from ._lottery import DEFAULT_LTILE_COLS, SUPPORTED_LTILE_COLS
++from ._lottery import DEFAULT_LTILE_COLS, SUPPORTED_LTILE_COLS, _fold_word
+ 
+ WARP_ROWS = 16  # accumulator rows per mma warp (one m16n8 atom row block)
+ WG_ROWS = 4 * WARP_ROWS  # rows per mma warpgroup, the unit a compression warp hashes
+@@ -183,6 +184,34 @@
+                 c, h, nb = value % 2, (value // 2) % 2, value // 4
+                 assert row == WARP_ROWS * warp_idx + (lane >> 2) + 8 * h, "fragment row map"
+                 assert column == _MMA_INST_N * nb + 2 * (lane & 3) + c, "fragment column map"
++
++    @cute.jit
++    def _stage_lottery_messages(self, accumulator, sExt, warp_group_idx, warp_in_wg, lane):
++        """Match the pinned verifier's sixteen contiguous row-major chunks."""
++        cute.arch.barrier(
++            barrier_id=int(_NamedBarrier.LOTTERY_BUFFER_FREE_WG0) + warp_group_idx,
++            number_of_threads=WG_THREADS + cute.arch.WARP_SIZE,
++        )
++        blocks_per_chunk = self.ltile_cols // (4 * _MMA_INST_N)
++        for row_half in cutlass.range_constexpr(2):
++            for column_tile in cutlass.range_constexpr(self.column_tiles):
++                for chunk in cutlass.range_constexpr(4):
++                    folded = cutlass.Uint32(0)
++                    for block in cutlass.range_constexpr(blocks_per_chunk):
++                        nb = column_tile * (self.ltile_cols // _MMA_INST_N) + chunk * blocks_per_chunk + block
++                        for owner in cutlass.range_constexpr(4):
++                            for column in cutlass.range_constexpr(2):
++                                word = accumulator[((column, row_half), 0, nb)].bitcast(cutlass.Uint32)
++                                word = cute.arch.shuffle_sync(word, (lane & ~3) + owner)
++                                folded = _fold_word(folded, word)
++                    if (lane & 3) == chunk:
++                        thread_row = 4 * warp_in_wg + 2 * row_half + (lane >> 4)
++                        message = thread_row * self.column_tiles + column_tile
++                        sExt[warp_group_idx, message, lane & 15] = folded
++        cute.arch.barrier_arrive(
++            barrier_id=int(_NamedBarrier.FOLD_DONE_WG0) + warp_group_idx,
++            number_of_threads=WG_THREADS + cute.arch.WARP_SIZE,
++        )
+ 
+     def _message_lottery_row(self, tile_m_idx, row_message, warp_group_idx):
+         """Problem lottery row of ``_stage_lottery_messages``' row message

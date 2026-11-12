@@ -143,3 +143,7 @@ Run without Python `-O`. Set `CUDA_PATH`, `LD_LIBRARY_PATH`, `CUDA_DEVICE_ORDER=
 ## Conclusion and remaining research
 
 This completed study advances the initial GEMM experiment to arithmetic conformance and full local plain-proof acceptance. The useful next work is a direct canonical-norm interface, resolution of the pinned pA layout mismatch, and differential ticket tests at harder targets, followed by ZK-certificate measurements. Those require new integration studies. The present deliverable is reproducible research evidence, with both positive results and observed limitations retained.
+
+## Follow-up closure, 12 November 2026
+
+The [follow-up report](FOLLOWUP_REPORT.md) resolves the concrete next steps with new evidence and updated conclusions. Its findings supersede the open-work wording in this historical campaign.

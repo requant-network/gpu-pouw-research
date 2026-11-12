@@ -99,3 +99,7 @@ Original experiment code is MIT licensed. References retain their own licenses. 
 
 - [gpu-zk-research](https://github.com/requant-network/gpu-zk-research)
 - [gpu-fhe-research](https://github.com/requant-network/gpu-fhe-research)
+
+## Follow-up closure, 12 November 2026
+
+The [follow-up report](FOLLOWUP_REPORT.md) records the disposition of the concrete next steps: new experiments, negative findings and measured resource limits. The earlier completed campaign remains available for historical comparison. Run `python verify_conformance.py` for the added source, artifact and protocol evidence checks.
